@@ -15,75 +15,85 @@ function tabs(evt, typeTab) {
 document.getElementById("defaultOpen").click();
 
 
-(function($){
-  $(window).on("load",function(){
+$(function(){
+  $(window).load(function() {
       $(".tv").mCustomScrollbar();
   });
-})(jQuery);
+});
 
 $(".tv").mCustomScrollbar({
   axis: 'y',
   theme: 'inset-2-dark',
-  scrollInertia: '1500',
+  scrollInertia: '0',
   mouseWheel: {
       deltaFactor: 80
   }
 });
 
 
-var modal = document.querySelector(".login");
-var btn = document.querySelector(".login-btn");
+var modalWindow = document.querySelector(".login");
+var loginBtn = document.querySelector(".login-btn");
 
-btn.onclick = function() {
-    modal.style.display = "block";
+loginBtn.onclick = function() {
+  modalWindow.style.display = "block";
 }
 
 window.onclick = function() {
-    modal.style.display = "none";
+  modalWindow.style.display = "none";
 }
 
 window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
+    if (event.target == modalWindow) {
+      modalWindow.style.display = "none";
     }
 }
 
 
-var logout = document.querySelector(".logout");
-var userhide = document.querySelector('.user-hide');
+var logoutBtn = document.querySelector(".logout");
+var userhide = document.querySelector('.user__hide');
 
 document.getElementById('entry').onclick = function () {
-	let username = document.getElementById('username').value;
-	let password = document.getElementById('password').value;
-	let out = document.getElementById('out');
+	var username = document.getElementById('username').value;
+	var password = document.getElementById('password').value;
+	var out = document.getElementById('out');
 
 	if (username === 'kostya' && password === '12345') {
     out.innerHTML = 'Константин К.';
-    btn.style.display = "none";
-    modal.style.display = "none";
-    logout.style.display = "block";
+    loginBtn.style.display = "none";
+    modalWindow.style.display = "none";
+    logoutBtn.style.display = "block";
   }
 
-	var serialObj1 = JSON.stringify(username);
-	var serialObj2 = JSON.stringify(password);
-
-  localStorage.setItem('username', serialObj1);
-  localStorage.setItem('password', serialObj2);
+  localStorage.setItem('username', username);
+  localStorage.setItem('password', password);
+  localStorage.setItem('name', out.innerHTML);
   userhide.style.display = (userhide.style.display == 'inherit') ? '' : 'inherit';
   localStorage.setItem('hide', userhide.style.display);
+}
 
-	var returnObj1 = JSON.parse(localStorage.getItem('username'))
-	var returnObj2 = JSON.parse(localStorage.getItem('password'))
+var inputName = document.querySelector('.change-name');
+
+function save() {
+  var changeName = document.getElementById('change').value;
+  localStorage.setItem('name', changeName);
+  inputName.style.display = 'none';
+  out.style.display = 'block';
+  out.innerHTML = localStorage.getItem('name');
+}
+
+out.onclick = function() {
+  inputName.style.display = 'block';
+  out.style.display = 'none';
 }
 
 if(localStorage.getItem('hide') == 'inherit') {
-  document.querySelector('.user-hide').style.display = 'inherit';
-  out.innerHTML = 'Константин К.';
-  btn.style.display = "none";
-  logout.style.display = "block";
+  document.querySelector('.user__hide').style.display = 'inherit';
+  out.innerHTML = localStorage.getItem('name');
+  loginBtn.style.display = "none";
+  logoutBtn.style.display = "block";
 }
 
-logout.onclick = function() {
+logoutBtn.onclick = function() {
   location.reload();
   localStorage.clear();
 }

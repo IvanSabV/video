@@ -27,13 +27,13 @@
     border-bottom: 1px solid @main-dark;
     height: 25px;
     .font(16px; 600; 19px);
-    font-family: 'Rubik', 'Arial', sans-serif;
+    font-family: "Rubik", "Arial", sans-serif;
 
     &::placeholder {
       .font(16px; 400; 19px);
       color: @plcholder;
       padding-bottom: 9px;
-      font-family: 'Rubik', 'Arial', sans-serif;
+      font-family: "Rubik", "Arial", sans-serif;
     }
   }
 
@@ -41,41 +41,10 @@
     background: none;
     outline: none;
     border: none;
-    font-family: 'Rubik', 'Arial', sans-serif;
+    font-family: "Rubik", "Arial", sans-serif;
     .font(16px; 600; 19px);
     color: @main-red;
     cursor: pointer;
-  }
-
-  .user {
-    display: flex;
-    align-items: center;
-    width: 182px;
-    justify-content: flex-end;
-
-    p {
-      .font(16px; 600; 19px);
-      padding-right: 10px;
-    }
-  }
-
-  .user-hide {
-    display: none;
-  }
-
-  .logout {
-    display: none;
-    background: none;
-    outline: none;
-    border: none;
-    font-family: 'Rubik', 'Arial', sans-serif;
-    .font(16px; 600; 19px);
-    color: @main-red;
-    cursor: pointer;
-  }
-
-  .login-btn {
-    .button();
   }
 }
 

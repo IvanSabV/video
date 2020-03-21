@@ -10,7 +10,6 @@
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="js/jquery-ui.js"></script>
   <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-  <script src="js/script.js"></script>
 </head>
 <body>
 
@@ -24,13 +23,17 @@
       <button class="head__btn" type="submit">Найти</button>
     </form>
     <div class="user">
-      <div class="user-hide">
+      <div class="user__hide">
         <p id="out"></p>
+        <div class="user__changename">
+          <input type="text" id="change" class="change-name">
+          <input class="name-save" type="button" onclick="save()">
+        </div>
         <button class="logout" type="button">Выйти</button>
       </div>
     <button class="login-btn" type="button">Войти</button>
     </div>
-    <div class="login">
+    <form class="login">
       <div class="login__form">
         <h2>Вход</h2>
         <fieldset>
@@ -44,7 +47,7 @@
         <button id="entry" class="log-btn" type="submit">Войти</button>
 
       </div>
-    </div>
+    </form>
   </header>
 
   <main class="content">
@@ -59,7 +62,14 @@
           <div class="item">
             <a href="#">
               <div class="item__img">
-                <img src="img/image-1.png" alt="">
+                <picture>
+                  <source type="image/webp" media="(min-width: 1150px)" srcset="img/image-1-desktop@1x.webp, img/image-1-desktop@2x.webp 2x">
+                  <source type="image/webp" media="(min-width: 768px)" srcset="img/image-1-tablet@1x.webp, img/image-1-tablet@2x.webp 2x">
+                  <source type="image/webp" srcset="img/image-1.webp, img/image-1@2x.webp 2x">
+                  <source media="(min-width: 1150px)" srcset="img/image-1-desktop@1x.jpg, img/image-1-desktop@2x.jpg 2x">
+                  <source media="(min-width: 768px)" srcset="img/image-1-tablet@1x.jpg, img/image-1-tablet@2x.jpg 2x">
+                  <img src="img/image-1.jpg" alt="">
+                </picture>
                 <div class="item__hover">
                   Фильм повествует о череде событий, произошедших в Голливуде в 1969 году, на закате его «золотого века».
                 </div>

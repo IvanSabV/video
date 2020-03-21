@@ -11,7 +11,8 @@ var gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     plumber = require("gulp-plumber"),
     webp = require("gulp-webp"),
-    svgstore = require("gulp-svgstore");
+    svgstore = require("gulp-svgstore"),
+    uglify = require("gulp-uglify");
 
 gulp.task('less', function () {
   return gulp.src('source/less/main.less')
@@ -56,6 +57,7 @@ gulp.task('css', function() {
 
 gulp.task('js', function() {
   return gulp.src('source/js/*.js')
+  .pipe(uglify())
   .pipe(gulp.dest("build/js"))
   .pipe(browserSync.reload({ stream: true }));
 });
@@ -110,6 +112,6 @@ gulp.task('clear', function (callback) {
 })
 
 
-gulp.task('build', gulp.series('prebuild', 'clean', 'img', 'webp', 'less', 'sprite'));
+gulp.task('build', gulp.series('prebuild', 'clean', 'img', 'webp', 'less', 'js', 'sprite'));
 
 gulp.task('start', gulp.series('build', 'browser-sync'));
