@@ -1,3 +1,6 @@
+!localStorage && (l = location, p = l.pathname.replace(/(^..)(:)/, "$1$$"), (l.href = l.protocol + "//127.0.0.1" + p));
+
+
 function tabs(evt, typeTab) {
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");
@@ -31,8 +34,8 @@ $(".tv").mCustomScrollbar({
 });
 
 
-var modalWindow = document.querySelector(".login");
-var loginBtn = document.querySelector(".login-btn");
+var modalWindow = document.querySelector('.login');
+var loginBtn = document.querySelector('.user__login-btn');
 
 loginBtn.onclick = function() {
   modalWindow.style.display = "block";
@@ -49,7 +52,7 @@ window.onclick = function(event) {
 }
 
 
-var logoutBtn = document.querySelector(".logout");
+var logoutBtn = document.querySelector('.user__logout');
 var userhide = document.querySelector('.user__hide');
 
 document.getElementById('entry').onclick = function () {
@@ -72,21 +75,30 @@ document.getElementById('entry').onclick = function () {
 }
 
 var inputName = document.querySelector('.change-name');
+var nameSave = document.querySelector('.name-save');
 
-function save() {
+nameSave.onmousedown = function() {
   var changeName = document.getElementById('change').value;
   localStorage.setItem('name', changeName);
   inputName.style.display = 'none';
   out.style.display = 'block';
   out.innerHTML = localStorage.getItem('name');
+  nameSave.style.display = 'none';
 }
 
 out.onclick = function() {
   inputName.style.display = 'block';
+  nameSave.style.display = 'block';
   out.style.display = 'none';
 }
 
-if(localStorage.getItem('hide') == 'inherit') {
+inputName.onblur = function() {
+  inputName.style.display = 'none';
+  nameSave.style.display = 'none';
+  out.style.display = 'block';
+}
+
+if (localStorage.getItem('hide') == 'inherit') {
   document.querySelector('.user__hide').style.display = 'inherit';
   out.innerHTML = localStorage.getItem('name');
   loginBtn.style.display = "none";

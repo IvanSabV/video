@@ -1,13 +1,18 @@
 .user {
   display: flex;
   align-items: center;
-  width: 182px;
+  height: 23px;
   justify-content: flex-end;
 
   p {
     .font(16px; 600; 19px);
     padding-right: 10px;
     width: max-content;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.8;
+    }
   }
 
   &__changename {
@@ -23,6 +28,10 @@
       .font(16px; 600; 19px);
       font-family: "Rubik", "Arial", sans-serif;
       margin-right: 10px;
+
+      &::-ms-clear {
+        display: none;
+      }
     }
 
     .name-save {
@@ -33,30 +42,54 @@
       width: 15px;
       outline: none;
       cursor: pointer;
-      border: solid #E5261E;
+      border: solid @main-red;
       border-width: 0 0 2px 2px;
       transform: rotate(315deg);
     }
+  }
 
-    &:hover {
-      .name-save {
-        display: block;
+  &__logout {
+    display: none;
+    background: none;
+    outline: none;
+    border: none;
+    font-family: "Rubik", "Arial", sans-serif;
+    .font(16px; 600; 19px);
+    color: @main-red;
+    cursor: pointer;
+  }
+
+  &__login-btn {
+    .button();
+  }
+}
+
+
+@media (min-width: @tablet-width) {
+  .user {
+    width: 182px;
+    height: auto;
+
+    &__changename {
+      .change-name {
+        width: 130px;
       }
     }
   }
 }
 
-.logout {
-  display: none;
-  background: none;
-  outline: none;
-  border: none;
-  font-family: "Rubik", "Arial", sans-serif;
-  .font(16px; 600; 19px);
-  color: @main-red;
-  cursor: pointer;
-}
+@media (min-width: @desktop-width) {
+  .user {
+    &__changename {
+      .change-name {
+        width: max-content;
+      }
 
-.login-btn {
-  .button();
+      &:hover {
+        .name-save {
+          display: block;
+        }
+      }
+    }
+  }
 }
