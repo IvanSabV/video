@@ -90,6 +90,7 @@ out.onclick = function() {
   inputName.style.display = 'block';
   nameSave.style.display = 'block';
   out.style.display = 'none';
+  inputName.value = localStorage.getItem('name');
 }
 
 inputName.onblur = function() {
